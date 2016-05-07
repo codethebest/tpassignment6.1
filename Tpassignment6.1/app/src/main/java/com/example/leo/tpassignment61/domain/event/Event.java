@@ -9,13 +9,13 @@ public class Event {
     private String host;
     private String description;
     private byte[] eventFlyerImage;
-    private String id;
+    private Long id;
     public Event ()
     {
 
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
@@ -55,7 +55,7 @@ public class Event {
         private String host;
         private String description;
         private byte[] eventFlyerImage;
-        private String id;
+        private Long id;
         public Builder name (String value)
         {
             this.name = value;
@@ -67,7 +67,7 @@ public class Event {
             return this;
         }
 
-        public Builder id(String value) {
+        public Builder id(Long value) {
             this.id = value;
             return this;
         }

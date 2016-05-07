@@ -24,7 +24,7 @@ public class UserRegistrationRepositoryImp extends SQLiteOpenHelper implements U
 
     public static final String COLUMN_ID = "id";
     public static final String COLUMN_NAME = "name";
-    //public static final String COLUMN_GENDER = "Gender";
+    public static final String COLUMN_GENDER = "Gender";
     public static final String COLUMN_USEREMAIL = "useremail";
     public static final String COLUMN_PASSWORD = "password";
 
@@ -33,7 +33,7 @@ public class UserRegistrationRepositoryImp extends SQLiteOpenHelper implements U
     + TABLE_USERREGISTRATION + "("
             + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COLUMN_NAME + " TEXT NOT NULL , "
-          //  + COLUMN_GENDER + " TEXT NOT NULL , "
+            + COLUMN_GENDER + " TEXT NOT NULL , "
             + COLUMN_USEREMAIL + " TEXT NOT NULL , "
             + COLUMN_PASSWORD + " TEXT NOT NULL );";
 
@@ -57,7 +57,7 @@ public class UserRegistrationRepositoryImp extends SQLiteOpenHelper implements U
                 TABLE_USERREGISTRATION, new String[]{
                         COLUMN_ID,
                         COLUMN_NAME,
-       //                 COLUMN_GENDER,
+                        COLUMN_GENDER,
                         COLUMN_USEREMAIL,
                         COLUMN_PASSWORD},
                 COLUMN_ID + " =? ",
@@ -71,7 +71,7 @@ public class UserRegistrationRepositoryImp extends SQLiteOpenHelper implements U
             final UserRegistration userRegistration = new UserRegistration.Builder()
                     .id(cursor.getLong(cursor.getColumnIndex(COLUMN_ID)))
                     .name(cursor.getString(cursor.getColumnIndex(COLUMN_NAME)))
-         //           .gender(cursor.getString(cursor.getColumnIndex(COLUMN_GENDER)))
+                    .gender(cursor.getString(cursor.getColumnIndex(COLUMN_GENDER)))
                     .useremail(cursor.getString(cursor.getColumnIndex(COLUMN_USEREMAIL)))
                     .newPassword(cursor.getString(cursor.getColumnIndex(COLUMN_PASSWORD)))
                     .build();
@@ -96,7 +96,7 @@ public class UserRegistrationRepositoryImp extends SQLiteOpenHelper implements U
                 final UserRegistration userRegistration = new UserRegistration.Builder()
                         .id(cursor.getLong(cursor.getColumnIndex(COLUMN_ID)))
                         .name(cursor.getString(cursor.getColumnIndex(COLUMN_NAME)))
-           //             .gender(cursor.getString(cursor.getColumnIndex(COLUMN_GENDER)))
+                        .gender(cursor.getString(cursor.getColumnIndex(COLUMN_GENDER)))
                         .useremail(cursor.getString(cursor.getColumnIndex(COLUMN_USEREMAIL)))
                         .newPassword(cursor.getString(cursor.getColumnIndex(COLUMN_PASSWORD)))
                         .build();
@@ -112,7 +112,7 @@ public class UserRegistrationRepositoryImp extends SQLiteOpenHelper implements U
         ContentValues values =new ContentValues();
         values.put(COLUMN_ID, entity.getId());
         values.put(COLUMN_NAME, entity.getName());
-        //values.put(COLUMN_GENDER, entity.getGender());
+        values.put(COLUMN_GENDER, entity.getGender());
         values.put(COLUMN_USEREMAIL, entity.getUseremail());
         values.put(COLUMN_PASSWORD, entity.getNewPassword());
         db.update(
@@ -148,7 +148,7 @@ public class UserRegistrationRepositoryImp extends SQLiteOpenHelper implements U
         ContentValues values = new ContentValues();
         values.put(COLUMN_ID,entity.getId());
         values.put(COLUMN_NAME,entity.getName());
-        //values.put(COLUMN_GENDER,entity.getGender());
+        values.put(COLUMN_GENDER,entity.getGender());
         values.put(COLUMN_USEREMAIL,entity.getUseremail());
         values.put(COLUMN_PASSWORD,entity.getNewPassword());
 

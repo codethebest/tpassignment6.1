@@ -9,7 +9,7 @@ public class CommentOnPost {
 
     private Long id;
     private String post;
-   // private Date date;
+    private Date date;
 
 
     public CommentOnPost ()
@@ -25,13 +25,12 @@ public class CommentOnPost {
         return post;
     }
 
-    /*public Date getDate() {
+    public Date getDate() {
         return date;
     }
-*/
+
     public CommentOnPost (Builder builder)
-    {
-  //      this.date=builder.date;
+    {this.date=builder.date;
         this.id=builder.id;
         this.post=builder.post;
     }
@@ -40,7 +39,7 @@ public class CommentOnPost {
     {
         private Long id;
         private String post;
-    //    private Date date;
+        private Date date;
 
         public Builder id(Long value) {
             this.id = value;
@@ -52,15 +51,15 @@ public class CommentOnPost {
             this.post = value;
             return this;
         }
-  /*      public Builder date (Date value)
+        public Builder date (Date value)
         {
             this.date = value;
             return this;
         }
-*/
+
         public Builder copy (CommentOnPost commentOnPost)
         {
-    //        this.date =commentOnPost.date;
+            this.date =commentOnPost.date;
             this.id=commentOnPost.id;
             this.post=commentOnPost.post;
             return this;

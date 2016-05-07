@@ -26,14 +26,14 @@ public class PostAnEventRepositoryImp extends SQLiteOpenHelper implements PostAn
 
     public static final String CULUMN_ID = "id";
     public static final String CULUMN_POST ="post";
-    //public static final String CULUMN_DATE ="date";
+    public static final String CULUMN_DATE ="date";
     public static final String CULUMN_TAGLINE ="tagline";
 
     private static final String DATEBASE_CREATE = " CREATE TABLE "
     + TABLE_NAME +"("
             + CULUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + CULUMN_POST + " TEXT NOT NULL , "
-            //+ CULUMN_DATE + " TEXT NOT NULL, "
+            + CULUMN_DATE + " TEXT NOT NULL, "
             + CULUMN_TAGLINE + " TEXT NOT NULL ) ";
 
     public PostAnEventRepositoryImp(Context context) {
@@ -56,7 +56,7 @@ public class PostAnEventRepositoryImp extends SQLiteOpenHelper implements PostAn
                 new String[]{
                         CULUMN_ID,
                         CULUMN_POST,
-           //             CULUMN_DATE,
+                        CULUMN_DATE,
                         CULUMN_TAGLINE},
                 CULUMN_ID + " =? ",
                 new String[]{String.valueOf(id)},
@@ -68,7 +68,7 @@ public class PostAnEventRepositoryImp extends SQLiteOpenHelper implements PostAn
             final PostAnEvent postAnEvent = new PostAnEvent.Builder()
                     .id(cursor.getLong(cursor.getColumnIndex(CULUMN_ID)))
                     .post(cursor.getString(cursor.getColumnIndex(CULUMN_POST)))
-         //           .date(AppUtil.getDate(cursor.getString(cursor.getColumnIndex(CULUMN_DATE))))
+                    .date(AppUtil.getDate(cursor.getString(cursor.getColumnIndex(CULUMN_DATE))))
                     .tagline(cursor.getString(cursor.getColumnIndex(CULUMN_TAGLINE)))
                     .build();
                 return postAnEvent;
@@ -84,7 +84,7 @@ public class PostAnEventRepositoryImp extends SQLiteOpenHelper implements PostAn
         ContentValues values = new ContentValues();
         values.put(CULUMN_ID,entity.getId());
         values.put(CULUMN_POST,entity.getPost());
-       // values.put(CULUMN_DATE,entity.getDate().toString());
+        values.put(CULUMN_DATE,entity.getDate().toString());
         values.put(CULUMN_TAGLINE,entity.getTagline());
 
         Long id = db.insertOrThrow(TABLE_NAME, null , values);
@@ -108,7 +108,7 @@ public class PostAnEventRepositoryImp extends SQLiteOpenHelper implements PostAn
                 PostAnEvent postAnEvent = new PostAnEvent.Builder()
                         .id(cursor.getLong(cursor.getColumnIndex(CULUMN_ID)))
                         .post(cursor.getString(cursor.getColumnIndex(CULUMN_POST)))
-          //              .date(AppUtil.getDate(cursor.getString(cursor.getColumnIndex(CULUMN_DATE))))
+                        .date(AppUtil.getDate(cursor.getString(cursor.getColumnIndex(CULUMN_DATE))))
                         .tagline(cursor.getString(cursor.getColumnIndex(CULUMN_TAGLINE)))
                         .build();
                 postAnEvents.add(postAnEvent);
@@ -127,7 +127,7 @@ public class PostAnEventRepositoryImp extends SQLiteOpenHelper implements PostAn
         ContentValues values = new ContentValues();
         values.put(CULUMN_ID, entity.getId());
         values.put(CULUMN_POST,entity.getPost());
-        //values.put(CULUMN_DATE,entity.getDate().toString());
+        values.put(CULUMN_DATE,entity.getDate().toString());
         values.put(CULUMN_TAGLINE,entity.getTagline());
         db.update(TABLE_NAME, values, CULUMN_ID + " =? ",
                 new String[]{String.valueOf(entity.getId())}

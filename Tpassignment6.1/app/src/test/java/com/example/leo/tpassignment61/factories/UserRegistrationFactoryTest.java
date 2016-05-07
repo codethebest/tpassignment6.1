@@ -23,7 +23,7 @@ public class UserRegistrationFactoryTest {
         UserRegistration userRegistration1 = new UserRegistration.Builder()
                 .copy(userRegistration)
                 .newPassword("875")
-                .gender("Female")
+               // .gender("Female")
                 .build();
         Assert.assertEquals("875", userRegistration1.getNewPassword());
     }

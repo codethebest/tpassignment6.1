@@ -12,6 +12,7 @@ public class PersonContact implements Serializable{
     private String website;
     private String email;
     private Long id;
+
     public PersonContact ()
     {
 

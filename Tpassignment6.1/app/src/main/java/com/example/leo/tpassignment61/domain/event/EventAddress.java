@@ -5,19 +5,18 @@ package com.example.leo.tpassignment61.domain.event;
  */
 public class EventAddress
 {
-
         private String street;
         private String sub;
         private String country;
         private String city;
-        private String id;
+        private Long id;
 
         public EventAddress()
         {
 
         }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
@@ -52,7 +51,7 @@ public static class Builder
     private String sub;
     private String country;
     private String city;
-    private String id;
+    private Long id;
     public Builder street (String value)
     {
         this.street = value;
@@ -65,7 +64,7 @@ public static class Builder
         return this;
     }
 
-    public Builder id(String value) {
+    public Builder id(Long value) {
         this.id = value;
         return this;
     }

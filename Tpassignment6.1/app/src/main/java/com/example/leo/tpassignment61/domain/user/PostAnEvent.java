@@ -9,7 +9,7 @@ public class PostAnEvent {
 
         private Long id;
         private String post;
-        //private Date date;
+        private Date date;
         private String tagline;
 
         public PostAnEvent ()
@@ -29,14 +29,14 @@ public class PostAnEvent {
                 return tagline;
         }
 
-       /* public Date getDate() {
+        public Date getDate() {
                 return date;
         }
-        */
+
         public PostAnEvent (Builder builder)
         {
                 this.tagline =builder.tagline;
-         //       this.date=builder.date;
+                this.date=builder.date;
                 this.id=builder.id;
                 this.post=builder.post;
         }
@@ -45,7 +45,7 @@ public class PostAnEvent {
         {
                 private Long id;
                 private String post;
-           //     private Date date;
+                private Date date;
                 private String tagline;
 
                 public Builder id(Long value) {
@@ -64,15 +64,15 @@ public class PostAnEvent {
                         this.tagline = value;
                         return this;
                 }
-             /*   public Builder date (Date value)
+                public Builder date (Date value)
                 {
                         this.date = value;
                         return this;
-                }*/
+                }
                 
                 public Builder copy (PostAnEvent postAnEvent)
                 {
-                   //     this.date =postAnEvent.date;
+                        this.date =postAnEvent.date;
                         this.id=postAnEvent.id;
                         this.post=postAnEvent.post;
                         this.tagline = postAnEvent.tagline;

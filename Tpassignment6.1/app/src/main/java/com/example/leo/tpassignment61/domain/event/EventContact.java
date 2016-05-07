@@ -5,8 +5,8 @@ package com.example.leo.tpassignment61.domain.event;
  */
 public class EventContact {
 
-    private String id;
-    private int phone;
+    private Long id;
+    private String phone;
     private String website;
     private String email;
 
@@ -15,7 +15,7 @@ public class EventContact {
 
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
@@ -27,7 +27,7 @@ public class EventContact {
         return website;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
@@ -42,18 +42,18 @@ public class EventContact {
 
     public static class Builder
     {
-        private int phone;
+        private String phone;
         private String website;
         private String email;
-        private String id;
+        private Long id;
 
-        public Builder phone(int value)
+        public Builder phone(String value)
         {
             this.phone = value;
             return this;
         }
 
-        public Builder id(String value) {
+        public Builder id(Long value) {
             this.id = value;
             return this;
         }

@@ -7,7 +7,7 @@ import com.example.leo.tpassignment61.repository.user.impl.PostAnEventRepository
 
 import junit.framework.Assert;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.Set;
 /**
  * Created by Leo on 4/25/2016.
@@ -20,11 +20,11 @@ public class PostAnEventRepositoryTest extends AndroidTestCase{
     public void testCreateReadUpdateDelete()throws Exception
     {
         objpostAnEventRepo = new PostAnEventRepositoryImp(this.getContext());
-
+        Date mydate = new Date(2016,02,8);
         PostAnEvent createEntity = new PostAnEvent.Builder()
                 .post("We having fun at my house")
                 .tagline("#funtime")
-              //  .date(Date.valueOf("10-6-1996"))
+                .date(mydate)
                 .build();
         PostAnEvent insertedEntity = objpostAnEventRepo.save(createEntity);
         id=insertedEntity.getId();
@@ -41,6 +41,7 @@ public class PostAnEventRepositoryTest extends AndroidTestCase{
 
         PostAnEvent updataEntity = new PostAnEvent.Builder()
                 .copy(entity)
+                .date(mydate)
                 .tagline("#FunRide")
                 .build();
         objpostAnEventRepo.update(updataEntity);

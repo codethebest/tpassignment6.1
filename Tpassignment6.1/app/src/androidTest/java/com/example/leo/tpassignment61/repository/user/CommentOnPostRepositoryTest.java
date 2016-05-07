@@ -6,7 +6,12 @@ import com.example.leo.tpassignment61.domain.user.CommentOnPost;
 import com.example.leo.tpassignment61.repository.user.impl.CommentOnPostRepositoryImp;
 
 import org.junit.Assert;
+
+import java.util.Date;
 import java.util.Set;
+
+import javax.xml.datatype.XMLGregorianCalendar;
+
 /**
  * Created by Leo on 4/25/2016.
  */
@@ -17,10 +22,12 @@ public class CommentOnPostRepositoryTest extends AndroidTestCase{
 
     public void testCreateReadUpdateDelete()throws Exception
     {
+        Date mydate = new Date(1996,02,14);
         repo = new CommentOnPostRepositoryImp(this.getContext());
 
         CommentOnPost createEntity = new CommentOnPost.Builder()
                 .post("We having fun at my house")
+                .date(mydate)
                 .build();
         CommentOnPost insertedEntity = repo.save(createEntity);
         id=insertedEntity.getId();
@@ -37,6 +44,7 @@ public class CommentOnPostRepositoryTest extends AndroidTestCase{
 
         CommentOnPost updataEntity = new CommentOnPost.Builder()
                 .copy(entity)
+                .date(mydate)
                 .build();
         repo.update(updataEntity);
         CommentOnPost newEntity = repo.read(id);

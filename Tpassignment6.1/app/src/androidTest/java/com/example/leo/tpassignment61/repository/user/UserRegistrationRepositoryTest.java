@@ -19,7 +19,7 @@ public class UserRegistrationRepositoryTest extends AndroidTestCase{
         repo = new UserRegistrationRepositoryImp(this.getContext());
         //**********************Create**************************************************
        UserRegistration createEntity = new UserRegistration.Builder()
-              // .gender("Male")
+               .gender("Male")
                 .name("Liyolo")
                 .useremail("Leo.moko@gmail.com")
                 .newPassword("2566")

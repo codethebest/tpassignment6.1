@@ -24,13 +24,13 @@ public class CommentOnPostRepositoryImp extends SQLiteOpenHelper implements Comm
 
     public static final String CULUMN_ID = "id";
     public static final String CULUMN_POST ="post";
-//    public static final String CULUMN_DATE ="date";
+    public static final String CULUMN_DATE ="date";
 
     private static final String DATEBASE_CREATE = " CREATE TABLE "
             + TABLE_NAME +"("
             + CULUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-            + CULUMN_POST + " TEXT NOT NULL ) ";
-           // + CULUMN_DATE + " TEXT NOT NULL ) ";
+            + CULUMN_POST + " TEXT NOT NULL , "
+            + CULUMN_DATE + " TEXT NOT NULL ); ";
 
 
     public CommentOnPostRepositoryImp(Context context) {
@@ -53,7 +53,7 @@ public class CommentOnPostRepositoryImp extends SQLiteOpenHelper implements Comm
                 new String[]{
                         CULUMN_ID,
                         CULUMN_POST,
-             //           CULUMN_DATE
+                        CULUMN_DATE
              },
                 CULUMN_ID + " =? ",
                 new String[]{String.valueOf(id)},
@@ -65,7 +65,7 @@ public class CommentOnPostRepositoryImp extends SQLiteOpenHelper implements Comm
             final CommentOnPost commentOnPost = new CommentOnPost.Builder()
                     .id(cursor.getLong(cursor.getColumnIndex(CULUMN_ID)))
                     .post(cursor.getString(cursor.getColumnIndex(CULUMN_POST)))
-          //          .date(AppUtil.getDate(cursor.getString(cursor.getColumnIndex(CULUMN_DATE))))
+                    .date(AppUtil.getDate(cursor.getString(cursor.getColumnIndex(CULUMN_DATE))))
                     .build();
             return commentOnPost;
         }
@@ -80,7 +80,7 @@ public class CommentOnPostRepositoryImp extends SQLiteOpenHelper implements Comm
         ContentValues values = new ContentValues();
         values.put(CULUMN_ID,entity.getId());
         values.put(CULUMN_POST,entity.getPost());
-        //values.put(CULUMN_DATE,entity.getDate().toString());
+        values.put(CULUMN_DATE,entity.getDate().toString());
 
         Long id = db.insertOrThrow(TABLE_NAME, null , values);
         CommentOnPost insertEntity = new CommentOnPost.Builder()
@@ -110,7 +110,7 @@ public class CommentOnPostRepositoryImp extends SQLiteOpenHelper implements Comm
         }
 
         else {
-            return null;
+            return commntOnPosts;
         }
     }
 
@@ -120,7 +120,7 @@ public class CommentOnPostRepositoryImp extends SQLiteOpenHelper implements Comm
         ContentValues values = new ContentValues();
         values.put(CULUMN_ID, entity.getId());
         values.put(CULUMN_POST,entity.getPost());
-      //  values.put(CULUMN_DATE,entity.getDate().toString());
+        values.put(CULUMN_DATE,entity.getDate().toString());
         db.update(TABLE_NAME, values, CULUMN_ID + " =? ",
                 new String[]{String.valueOf(entity.getId())}
         );

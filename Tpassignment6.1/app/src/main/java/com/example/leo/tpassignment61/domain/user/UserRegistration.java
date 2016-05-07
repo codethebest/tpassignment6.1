@@ -11,7 +11,7 @@ public class UserRegistration {
     private String name;
     private String useremail;
     private String newPassword;
-   // private String gender;
+    private String gender;
 
     public UserRegistration ()
     {
@@ -34,15 +34,15 @@ public class UserRegistration {
         return newPassword;
     }
 
-    /*public String getGender() {
+    public String getGender() {
         return gender;
     }
-*/
+
     public UserRegistration (Builder builder)
     {
         this.id = builder.id;
         this.name = builder.name;
-  //      this.gender = builder.gender;
+        this.gender = builder.gender;
         this.useremail = builder.useremail;
         this.newPassword = builder.newPassword;
     }
@@ -52,7 +52,7 @@ public class UserRegistration {
         private String name;
         private String useremail;
         private String newPassword;
-    //    private String gender;
+        private String gender;
         private Long id;
 
 
@@ -78,19 +78,19 @@ public class UserRegistration {
             this.newPassword = value;
             return this;
         }
-/*
+
         public Builder gender (String value)
         {
             this.gender = value;
             return this;
         }
-*/
+
 
         public Builder copy(UserRegistration userRegistration)
         {
             this.id=userRegistration.id;
             this.name = userRegistration.name;
-  //          this.gender = userRegistration.gender;
+            this.gender = userRegistration.gender;
             this.newPassword = userRegistration.newPassword;
             this.useremail = userRegistration.useremail;
 
